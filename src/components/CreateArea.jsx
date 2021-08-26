@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import Zoom from "@material-ui/core/Zoom";
+import axios from "axios";
 
 function CreateArea(props) {
   const [isExpanded, setExpanded] = useState(false);
@@ -24,6 +25,14 @@ function CreateArea(props) {
 
   function submitNote(event) {
     props.onAdd(note);
+
+
+    //************send note to backend*/
+    axios.post("http://localhost:5000/notes", note);
+    window.location = "/";
+    //************send note to backend*/
+
+
     setNote({
       title: "",
       content: ""
